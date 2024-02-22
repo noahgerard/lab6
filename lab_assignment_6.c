@@ -3,19 +3,26 @@
 
 int search(int numbers[], int low, int high, int value) 
 {
+	// Base case for value not found
 	if (low > high) {
 		return -1;
 	}
 
+	// Get middle of array
 	int mid = (low + high) / 2;
 
+	// Backtrack if number found
 	if (numbers[mid] == value) {
 		return mid;
 	}
 
+	// If value is in first half of array
 	if (numbers[mid] > value) {
+		// Search from start to mid
         return search(numbers, low, mid - 1, value);
+	// If value is in second half of array
 	} else if (numbers[mid] < value) {
+		// Search from mid to end
         return search(numbers, mid + 1, high, value);
 	}
 
